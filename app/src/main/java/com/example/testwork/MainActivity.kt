@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -85,7 +86,7 @@ fun Settings(modifier: Modifier = Modifier) {
                 .background(color = Color(0xFFDBEA8D))
                 .padding(horizontal = 16.dp, vertical = 22.dp)
         ) {
-            Text(text = "icon")
+            Image(painter = painterResource(R.drawable.baseline_app_settings_alt_24), contentDescription = "")
             Spacer(modifier.width(16.dp))
             Column {
                 Text(
@@ -107,7 +108,8 @@ fun Settings(modifier: Modifier = Modifier) {
         TextField(
             value = "",
             onValueChange = {},
-            modifier
+            placeholder = { Text("Search Settings...", fontSize = 20.sp, fontWeight = FontWeight(400))},
+            modifier = modifier
                 .fillMaxWidth(1f)
                 .clip(
                     RoundedCornerShape(25.dp)
@@ -117,45 +119,53 @@ fun Settings(modifier: Modifier = Modifier) {
         Option(
             heading = "Network & Internet",
             desc = "Wi-Fi, Mobile, Data usage, Hotspot",
+            icon = R.drawable.baseline_wifi_24,
             modifier = modifier
         )
         Spacer(modifier.height(41.dp))
         Option(
             heading = "Connected devices",
             desc = "Bluetooth, Cast, NFC",
+            icon = R.drawable.baseline_devices_other_24,
             modifier = modifier
         )
         Spacer(modifier.height(41.dp))
         Option(
             heading = "App",
             desc = "Permissions, default apps",
+            icon = R.drawable.baseline_apps_24,
             modifier = modifier
         )
         Spacer(modifier.height(41.dp))
         Option(
             heading = "Notifications",
             desc = "Permissions, dafault apps",
+            icon = R.drawable.baseline_notifications_24,
             modifier = modifier
         )
         Spacer(modifier.height(41.dp))
         Option(
             heading = "Digital wellbeing",
             desc = "Screen time, app timer, bedtime schedules",
+            icon = R.drawable.baseline_man_24,
             modifier = modifier
         )
     }
 }
 
 @Composable
-fun Option(heading: String, desc: String, modifier: Modifier) {
+fun Option(heading: String, desc: String, icon: Int, modifier: Modifier) {
     Row {
         Box(
-            modifier
+            contentAlignment = Alignment.Center,
+            modifier = modifier
                 .width(47.dp)
                 .height(47.dp)
                 .clip(RoundedCornerShape(50))
                 .background(Color(0xFFE2E3D8))
-        )
+        ) {
+            Image(painter = painterResource(id = icon), contentDescription = "")
+        }
         Spacer(modifier.width(17.dp))
         Column {
             Text(text = heading, fontSize = 20.sp, fontWeight = FontWeight(500))
