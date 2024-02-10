@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +17,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Surface
@@ -55,7 +58,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Settings(modifier: Modifier = Modifier) {
 
-    Column(modifier.padding(horizontal = 23.dp)) {
+    Column(
+        modifier
+            .padding(horizontal = 23.dp)
+            .verticalScroll(rememberScrollState())) {
         Spacer(modifier.height(27.dp))
         Row(Modifier.fillMaxWidth(1f), horizontalArrangement = Arrangement.End) {
             Image(
@@ -137,7 +143,6 @@ fun Settings(modifier: Modifier = Modifier) {
             desc = "Screen time, app timer, bedtime schedules",
             modifier = modifier
         )
-
     }
 }
 
